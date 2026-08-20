@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Disciplines from './components/Disciplines';
-import AgeTracks from './components/AgeTracks';
-import WhyBrainSpark from './components/WhyBrainSpark';
-import HowItWorks from './components/HowItWorks';
-import BrainArena from './components/BrainArena';
-import ParentDashboardDemo from './components/ParentDashboardDemo';
-import Coaches from './components/Coaches';
-import Testimonials from './components/Testimonials';
-import Pricing from './components/Pricing';
-import FAQ from './components/FAQ';
+import AboutUsSection from './components/AboutUsSection';
+import DisciplinesSection from './components/DisciplinesSection';
+import FounderSpotlight from './components/FounderSpotlight';
+import EventsSection from './components/EventsSection';
+import TestimonialSlider from './components/TestimonialSlider';
+import BlogSection from './components/BlogSection';
+import CallToActionSection from './components/CallToActionSection';
 import Footer from './components/Footer';
 import TrialBookingModal from './components/TrialBookingModal';
+import ParentPortalModal from './components/ParentPortalModal';
 
 export default function App() {
   const [trialModalOpen, setTrialModalOpen] = useState(false);
+  const [parentPortalOpen, setParentPortalOpen] = useState(false);
   const [selectedTrackForTrial, setSelectedTrackForTrial] = useState('');
 
   const handleOpenTrial = (trackName = '') => {
@@ -28,93 +27,69 @@ export default function App() {
     setSelectedTrackForTrial('');
   };
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[#070A12] text-slate-100 selection:bg-spark-500 selection:text-white relative">
+    <div className="min-h-screen bg-[#0E0D0B] text-neutral-900 selection:bg-sand-400 selection:text-noir-950 font-sans">
       
-      {/* Top Banner Notice */}
-      <div className="bg-gradient-to-r from-spark-600 via-amber-600 to-spark-600 text-white text-[11px] sm:text-xs font-bold py-1.5 px-4 text-center tracking-wide flex items-center justify-center gap-2 relative z-50">
-        <span>🚀 Fall Cohort Registrations Open! Limited to 4 students per batch.</span>
-        <button
-          onClick={() => handleOpenTrial()}
-          className="underline hover:text-amber-200 ml-1 hidden sm:inline"
-        >
-          Claim Your Free Trial Session →
-        </button>
-      </div>
-
-      {/* Navigation */}
+      {/* Top Header Navigation */}
       <Navbar
         onOpenTrialModal={() => handleOpenTrial()}
-        onScrollToSection={scrollToSection}
+        onOpenParentPortal={() => setParentPortalOpen(true)}
       />
 
-      {/* Hero Section */}
+      {/* 1. Cinematic Hero Section (Screenshot 1) */}
       <Hero
         onOpenTrialModal={() => handleOpenTrial()}
-        onScrollToArena={() => scrollToSection('brain-arena')}
       />
 
-      {/* 6 Core Disciplines */}
-      <Disciplines
-        onOpenTrialModal={(name) => handleOpenTrial(name)}
-      />
-
-      {/* Age-Based Progression Tracks */}
-      <AgeTracks
-        onOpenTrialModal={(name) => handleOpenTrial(name)}
-      />
-
-      {/* Why BrainSpark & Neuroscience Matrix */}
-      <WhyBrainSpark />
-
-      {/* 5-Stage Learning Journey */}
-      <HowItWorks
+      {/* 2. About Us Split Section (Screenshot 2 & 3) */}
+      <AboutUsSection
         onOpenTrialModal={() => handleOpenTrial()}
       />
 
-      {/* Interactive Cognitive Mini-Game Arena */}
-      <BrainArena
-        onOpenTrialModal={() => handleOpenTrial('Brain Arena Assessment')}
-      />
-
-      {/* Live Interactive Parent Dashboard Demo */}
-      <ParentDashboardDemo
-        onOpenTrialModal={() => handleOpenTrial('Parent Portal Enrolment')}
-      />
-
-      {/* World-Class Coaches & Mentors */}
-      <Coaches />
-
-      {/* Parent Reviews & Transformation Stories */}
-      <Testimonials />
-
-      {/* Transparent Pricing Plans */}
-      <Pricing
+      {/* 3. Our Classes / Disciplines Grid (Screenshot 3 & 4) */}
+      <DisciplinesSection
         onOpenTrialModal={(name) => handleOpenTrial(name)}
       />
 
-      {/* FAQ Accordion */}
-      <FAQ
+      {/* 4. Founder / Coach Philosophy Spotlight (Screenshot 5) */}
+      <FounderSpotlight />
+
+      {/* 5. Upcoming Events & Workshops (Screenshot 6 & 7) */}
+      <EventsSection
+        onOpenTrialModal={(name) => handleOpenTrial(name)}
+      />
+
+      {/* 6. Stories Behind the Moves / Testimonials (Screenshot 8) */}
+      <TestimonialSlider />
+
+      {/* 7. Cognitive Journal & Insights (Screenshot 9) */}
+      <BlogSection />
+
+      {/* 8. Call to Action with Arched Frames (Screenshot 10) */}
+      <CallToActionSection
         onOpenTrialModal={() => handleOpenTrial()}
       />
 
-      {/* Footer */}
+      {/* 9. Minimalist Footer (Screenshot 10) */}
       <Footer
         onOpenTrialModal={() => handleOpenTrial()}
       />
 
-      {/* Free Trial Modal */}
+      {/* Interactive Free Trial Booking Modal */}
       <TrialBookingModal
         isOpen={trialModalOpen}
         onClose={handleCloseTrial}
         preselectedTrack={selectedTrackForTrial}
+      />
+
+      {/* Interactive Parent Portal Demo Modal */}
+      <ParentPortalModal
+        isOpen={parentPortalOpen}
+        onClose={() => setParentPortalOpen(false)}
+        onOpenTrialModal={() => {
+          setParentPortalOpen(false);
+          handleOpenTrial();
+        }}
       />
 
     </div>

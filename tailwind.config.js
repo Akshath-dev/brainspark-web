@@ -4,46 +4,37 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        spark: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#FF6B00', // Primary BrainSpark Orange
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
-          DEFAULT: '#FF6B00',
+        cream: {
+          50: '#FAF8F5',
+          100: '#F4EFE6', // Signature Chestry/Editorial Alabaster Cream
+          200: '#EBE4D8',
+          300: '#DFD5C4',
+          400: '#CBBFA9',
+          DEFAULT: '#F4EFE6',
         },
-        navy: {
-          800: '#0F172A',
-          900: '#0B1120',
-          950: '#070A12',
+        sand: {
+          300: '#EED9B9',
+          400: '#E4C79B', // Signature Chestry Tan/Gold Button Color
+          500: '#D5B380',
+          DEFAULT: '#E4C79B',
+        },
+        noir: {
+          800: '#1C1B18',
+          900: '#141310',
+          950: '#0E0D0B', // Deep Luxury Espresso Black
+          DEFAULT: '#0E0D0B',
         }
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        serif: ['Instrument Serif', 'Playfair Display', 'Georgia', 'serif'],
       },
-      animation: {
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 4s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        glow: {
-          '0%': { filter: 'drop-shadow(0 0 10px rgba(255, 107, 0, 0.4))' },
-          '100%': { filter: 'drop-shadow(0 0 25px rgba(255, 107, 0, 0.8))' },
-        }
+      borderRadius: {
+        '4xl': '2rem',
+        '5xl': '2.5rem',
       }
     },
   },
